@@ -90,5 +90,10 @@ namespace Curta_Bianca_Lab2
   MessageBoxImage.Error);
             }
         }
+
+        private void txtQuantity_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
