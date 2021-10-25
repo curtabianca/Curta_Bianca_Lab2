@@ -4,9 +4,10 @@ using System.Text;
 using System.Windows.Threading;
 namespace Curta_Bianca_Lab2
 {
-    class DoughnutMachine
+    internal class DoughnutMachine
     {
         private DoughnutType mFlavor;
+
         public DoughnutType Flavor
         {
             get
@@ -18,23 +19,31 @@ namespace Curta_Bianca_Lab2
                 mFlavor = value;
             }
         }
+
         public delegate void DoughnutCompleteDelegate();
+
         public event DoughnutCompleteDelegate DoughnutComplete;
-        DispatcherTimer doughnutTimer;
+
+        private DispatcherTimer doughnutTimer;
+
         private void InitializeComponent()
         {
             this.doughnutTimer = new DispatcherTimer();
             this.doughnutTimer.Tick += new System.EventHandler(this.doughnutTimer_Tick);
         }
+
+        //viwe/document outline/dam pe ce vrem (window) putem si din xaml/ dam pe fulger de la proprietati/ dupa pe evenimentul pe care il vrem si add event?
         public DoughnutMachine()
         {
             InitializeComponent();
         }
+
         private void doughnutTimer_Tick(object sender, EventArgs e)
         {
             Doughnut aDoughnut = new Doughnut(this.Flavor);
             DoughnutComplete();
         }
+
         public bool Enabled
         {
             set
@@ -42,6 +51,7 @@ namespace Curta_Bianca_Lab2
                 doughnutTimer.IsEnabled = value;
             }
         }
+
         public int Interval
         {
             set
@@ -49,23 +59,9 @@ namespace Curta_Bianca_Lab2
                 doughnutTimer.Interval = new TimeSpan(0, 0, value);
             }
         }
-        public bool Enabled
-        {
-            set
-            {
-                doughnutTimer.IsEnabled = value;
-            }
-        }
-        public int Interval
-        {
-            set
-            {
-                doughnutTimer.Interval = new TimeSpan(0, 0, value);
-            }
-        }
+
         public void MakeDoughnuts(DoughnutType dFlavor)
         {
-
             Flavor = dFlavor;
             switch (Flavor)
             {
@@ -78,6 +74,7 @@ namespace Curta_Bianca_Lab2
             doughnutTimer.Start();
         }
     }
+
     public enum DoughnutType
     {
         Glazed,
@@ -86,7 +83,8 @@ namespace Curta_Bianca_Lab2
         Chocolate,
         Vanilla
     }
-    class Doughnut
+
+    internal class Doughnut
     {
         private DoughnutType mFlavor;
 
@@ -101,20 +99,21 @@ namespace Curta_Bianca_Lab2
                 mFlavor = value;
             }
         }
+
         private readonly DateTime mTimeOfCreation;
+
         public DateTime TimeOfCreation
         {
             get
             {
                 return mTimeOfCreation;
             }
-
         }
+
         public Doughnut(DoughnutType aFlavor) // constructor
         {
             mTimeOfCreation = DateTime.Now;
             mFlavor = aFlavor;
         }
     }
-    
 }
