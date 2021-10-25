@@ -48,7 +48,7 @@
                     </TransformGroup>
                 </Canvas.RenderTransform>
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="24" Canvas.Top="10"/>
-                <TextBox x:Name="txtQuantity" Canvas.Left="83" Canvas.Top="11" Text="0" TextWrapping="Wrap" Width="46"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="83" Canvas.Top="11" Text="0" TextWrapping="Wrap" Width="46" KeyUp="txtQuantity_KeyUp"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="134" Canvas.Top="7"/>
                 <ComboBox x:Name="cmbType" Canvas.Left="176" Canvas.Top="11" Width="96"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="294" Canvas.Top="7"/>
@@ -61,20 +61,24 @@
                 <Button x:Name="___btnCheckOut_" Content="Check Out" Canvas.Left="454" Canvas.Top="103" FontWeight="Bold"/>
             </Canvas>
         </GroupBox>
-        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="43" VerticalAlignment="Top"
-Width="179" Margin="10,0,0,0">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
-            </MenuItem>
-            <MenuItem Header="_Doughnuts">
-                <MenuItem Header="Make">
-                    <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
-                    </MenuItem>
-                    <MenuItem Header="Filled"/>
-                </MenuItem>
-            </MenuItem>
-        </Menu>
+       <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
+Width="131" Margin="0,26,0,0">
+ <MenuItem Header="File">
+ <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
+ </MenuItem>
+ <MenuItem Header="_Doughnuts">
+ <MenuItem Header="Make">
+ <MenuItem Header="Raised" IsCheckable="True">
+ <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed"
+Click="glazedToolStripMenuItem_Click" IsCheckable="True"/>
+ <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar"
+IsCheckable="True" Click="sugarToolStripMenuItem_Click"/>
+ </MenuItem>
+<MenuItem Header="Filled"/>
+ </MenuItem>
+ <MenuItem x:Name="mnuStop" Header="Stop"
+Click="stopToolStripMenuItem_Click"/>
+ </MenuItem>
+ </Menu>
     </Grid>
 </Window>
